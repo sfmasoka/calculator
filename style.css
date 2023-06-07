@@ -7,6 +7,8 @@
 .main{
     border: 2px solid black;
     justify-content: center;
+    padding-top: 20%;
+    padding-bottom: 20%;
     display:grid;
     grid-template-columns: repeat(4,100px);
     grid-template-rows: repeat(6,30px);
@@ -15,6 +17,8 @@
 .display{
     grid-column: 1/5;
     border: 1px solid black;
+    text-align: end;
+    
 }
 
 .clear{

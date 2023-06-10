@@ -4,10 +4,14 @@ function addition(a,b){
 }
 
 function subtraction(a,b){
-    return a - b;
+    return Number(a) - Number(b);
 }
 
 function product(a,b){
+  //  if(is_first){
+     //   b = 1;
+     //   is_first = false;
+    //}
     return a * b;
 }
 
@@ -19,9 +23,6 @@ function divide(a,b){
 function operate(a,operator,b){
 
 }
-
-
-
 
 
 
@@ -52,6 +53,8 @@ let var1 = "";
 let temp = "";
 let result = 0;
 let op = "";
+let is_first = true;
+let EqualsPressed = false;
 
 /**************** operation buttons *************/
 add.addEventListener("click",()=>
@@ -65,7 +68,36 @@ add.addEventListener("click",()=>
 
 minus.addEventListener("click",()=>
 {
-    display.textContent = subtraction(77,8);
+    temp = Number(var1);
+    var1 = "";
+    if (temp == 0 && result == 0){
+        // result = "-";
+        var1 = "" + "-";
+     }
+    // else if (result == "-"){
+      //   result = 0 -temp;
+     //}
+    else if (result<0 || (temp < 0 || temp == 0)){
+        result = subtraction(temp,-result);
+    }
+
+    else{
+        result = subtraction(temp,result);
+    }
+    display.textContent = "-";
+    op = "-"
+});
+
+multiply.addEventListener("click",()=>
+{
+    temp = Number(var1);
+    var1 = "";
+    //if(EqualsPressed) temp = 1;
+    if (result == 0 && temp!=0) result =1;
+    if (temp == 0 && result!=0) temp = 1; 
+    result = product(temp,result);
+    display.textContent = "x";
+    op = "x"
 });
 
 equal.addEventListener("click",()=>
@@ -75,6 +107,18 @@ equal.addEventListener("click",()=>
         op = "";
         var1 = "";
     }
+    else if(op=="-"){
+        result = subtraction(result,Number(var1));
+        op = "";
+        var1 = "";
+    }
+    else if(op=="x"){
+        result = product(result,Number(var1));
+        op = "";
+        var1 = "";
+        
+    }
+    //EqualsPressed = true;
     display.textContent = result;
 });
 
@@ -83,6 +127,11 @@ clear.addEventListener("click",()=>
     var1 = ""
     result = 0;
     display.textContent = "";
+    temp = "";
+    op = "";
+    is_first = true;
+    EqualsPressed = false;
+
 });
 
 
@@ -91,14 +140,22 @@ clear.addEventListener("click",()=>
 /**************** numbers buttons *************/
 one.addEventListener("click",()=>
 {
-    if(op=="") result = "";
+    if(op==""){
+        result = "";
+        is_first = true;
+        EqualsPressed = false;
+    }
     var1 = var1 + "1";
     display.textContent = var1;
 });
 
 two.addEventListener("click",()=>
 {
-    if(op=="") result = "";
+    if(op==""){
+        result = "";
+        is_first = true;
+        EqualsPressed = false;
+    }
     var1 = var1 + "2";
     display.textContent = var1; 
 });
@@ -106,41 +163,89 @@ two.addEventListener("click",()=>
 three.addEventListener("click",()=>
 {
 
-    display.textContent = "3";
+    if(op==""){
+        result = "";
+        is_first = true;
+        EqualsPressed = false;
+    }
+    var1 = var1 + "3";
+    display.textContent = var1; 
     
 });
 
 four.addEventListener("click",()=>
 {
-    display.textContent = "4";
+    if(op==""){
+        result = "";
+        is_first = true;
+        EqualsPressed = false;
+    }
+    var1 = var1 + "4";
+    display.textContent = var1; 
 });
 
 five.addEventListener("click",()=>
 {
-    display.textContent = "5";
+    if(op==""){
+        result = "";
+        is_first = true;
+        EqualsPressed = false;
+    }
+    var1 = var1 + "5";
+    display.textContent = var1; 
 });
 
 six.addEventListener("click",()=>
 {
-    display.textContent = "6";
+    if(op==""){
+        result = "";
+        is_first = true;
+        EqualsPressed = false;
+    }
+    var1 = var1 + "6";
+    display.textContent = var1; 
 });
 
 seven.addEventListener("click",()=>
 {
-    display.textContent = "7";
+    if(op==""){
+        result = "";
+        is_first = true;
+        EqualsPressed = false;
+    }
+    var1 = var1 + "7";
+    display.textContent = var1; 
 });
 
 eight.addEventListener("click",()=>
 {
-    display.textContent = "8";
+    if(op==""){
+        result = "";
+        is_first = true;
+        EqualsPressed = false;
+}
+    var1 = var1 + "8";
+    display.textContent = var1; 
 });
 
 nine.addEventListener("click",()=>
 {
-    display.textContent = "9";
+    if(op==""){
+        result = "";
+        is_first = true;
+        EqualsPressed = false;
+    }
+    var1 = var1 + "9";
+    display.textContent = var1; 
 });
 
 zero.addEventListener("click",()=>
 {
-    display.textContent = "0";
+    if(op==""){
+        result = "";
+        is_first = true;
+        EqualsPressed = false;
+    }
+    var1 = var1 + "0";
+    display.textContent = var1; 
 });
